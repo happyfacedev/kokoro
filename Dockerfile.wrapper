@@ -1,14 +1,12 @@
 # Use the existing working Kokoro FastAPI image as base
 FROM ghcr.io/remsky/kokoro-fastapi-gpu:latest
 
-# Switch to root to install additional packages
-USER root
-
-# Install runpod and any additional dependencies
-RUN pip install runpod>=1.0.0
-
 # Copy the serverless handler
 COPY handler-wrapper.py /app/handler.py
+
+# Switch to root to install runpod in the existing virtual environment
+USER root
+RUN /app/.venv/bin/pip install runpod>=1.0.0
 
 # Switch back to appuser
 USER appuser
