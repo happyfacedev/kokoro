@@ -8,6 +8,7 @@ ENTRYPOINT []
 COPY handler-wrapper.py /app/handler.py
 
 # Switch to root to install runpod in the existing virtual environment
+USER root
 # Debug: Explore environment to find where things are
 RUN echo "--- Environment Check ---" && \
     ls -la /app && \
