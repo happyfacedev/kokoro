@@ -3,7 +3,7 @@
   "description": "High-quality Text-to-Speech with voice mixing, timestamps, and phonemes. 100% API compatible with Kokoro FastAPI. Optimized for fast inference.",
   "type": "serverless",
   "category": "audio",
-  "iconUrl": "https://cdn.prod.website-files.com/67d20fb9f56ff2ec6a7a657d/685b40411e38197aff6351df_poddy-3.webp",
+  "iconUrl": "https://github.com/remsky/Kokoro-FastAPI/blob/master/githubbanner.png?raw=true",
   "config": {
     "runsOn": "GPU",
     "containerDiskInGb": 10,
