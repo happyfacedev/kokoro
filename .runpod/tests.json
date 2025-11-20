@@ -1,0 +1,64 @@
+{
+    "tests": [
+        {
+            "name": "basic_tts",
+            "input": {
+                "input": {
+                    "text": "Hello, this is a test of the Kokoro TTS system.",
+                    "voice": "af_bella",
+                    "response_format": "mp3"
+                }
+            },
+            "timeout": 60000
+        },
+        {
+            "name": "voice_combination",
+            "input": {
+                "input": {
+                    "text": "This is a combined voice test.",
+                    "voice": "af_bella+af_sky",
+                    "response_format": "mp3"
+                }
+            },
+            "timeout": 60000
+        },
+        {
+            "name": "captioned_speech",
+            "input": {
+                "input": {
+                    "endpoint": "/dev/captioned_speech",
+                    "method": "POST",
+                    "input": "Testing timestamps generation.",
+                    "voice": "af_bella",
+                    "return_timestamps": true
+                }
+            },
+            "timeout": 90000
+        }
+    ],
+    "config": {
+        "gpuTypeId": "NVIDIA RTX A4000",
+        "gpuCount": 1,
+        "env": [
+            {
+                "key": "HF_HOME",
+                "value": "/runpod-volume"
+            },
+            {
+                "key": "TRANSFORMERS_CACHE",
+                "value": "/runpod-volume"
+            },
+            {
+                "key": "HF_HUB_CACHE",
+                "value": "/runpod-volume"
+            }
+        ],
+        "allowedCudaVersions": [
+            "12.4",
+            "12.3",
+            "12.2",
+            "12.1",
+            "11.8"
+        ]
+    }
+}
