@@ -12,13 +12,15 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# Install Python deps
+# Install PyTorch with CUDA first (separate index)
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cu121
+
+# Install remaining Python deps from PyPI
 RUN pip install --no-cache-dir \
     "kokoro>=0.9.4" \
     soundfile \
     numpy \
-    "runpod>=1.0.0" \
-    torch --index-url https://download.pytorch.org/whl/cu121
+    "runpod>=1.0.0"
 
 # Pre-download model at build time so cold starts are fast
 RUN python -c "from kokoro import KPipeline; p = KPipeline(lang_code='a'); print('Model downloaded OK')"
